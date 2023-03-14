@@ -52,7 +52,11 @@ app.get('/api/hello', function(req, res) {
 
 app.post('/api/shorturl', function(req, res) {
   const originalUrl = req.body.url;
-  if (validUrl.isUri(originalUrl)){
+  // console.log(validUrl.isUri(originalUrl));
+  // console.log(validUrl.isHttpUri(originalUrl));
+  // console.log(validUrl.isHttpsUri(originalUrl));
+  // console.log(validUrl.isWebUri(originalUrl));
+  if (validUrl.isHttpUri(originalUrl) || validUrl.isHttpsUri(originalUrl)){
     const shortUrl = uuidv4();
     const newUrl = new Url({
       originalUrl: originalUrl,
